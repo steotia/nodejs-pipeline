@@ -1,0 +1,22 @@
+{
+  "name": "nodejs-pipeline",
+  "version": "1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steotia/nodejs-pipeline.git"
+  },
+  "author": "steotia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/steotia/nodejs-pipeline/issues"
+  },
+  "homepage": "https://github.com/steotia/nodejs-pipeline#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}

@@ -1,0 +1,19 @@
+FROM node:8.1.0-alpine
+
+RUN addgroup -S app && adduser -S -g app -s /bin/false app
+
+ENV HOME=/home/app
+
+COPY src/package.json src/npm-shrinkwrap.json $HOME/helloworld/
+RUN chown -R app:app $HOME/*
+
+USER app
+WORKDIR $HOME/helloworld
+RUN npm install
+
+USER root
+COPY src/. $HOME/helloworld/
+RUN chown -R app:app $HOME/*
+USER app
+
+CMD ["node", "app.js"]
