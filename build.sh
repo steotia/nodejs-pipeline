@@ -1,13 +1,13 @@
 #!/bin/bash
 # Build script
-extract () {
+e () {
     echo $( echo ${1} | jq ".${2}" | sed 's/\"//g')
 }
 
-metadata=$(./src/metadata.sh)
+m=$(./src/metadata.sh)
 
-author=$(extract "${metadata}" "author")
-name=$(extract "${metadata}" "name")
-version=$(extract "${metadata}" "version")
+author=$(e "${m}" "author")
+name=$(e "${m}" "name")
+version=$(e "${m}" "version")
 
 docker build -f ./Dockerfile.build -t ${author}/${name}:${version}-build .
