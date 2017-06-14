@@ -10,7 +10,10 @@ gulp.task('default', function() {
 });
 
 gulp.task('bundle',function(){
-    gulp.src('**','!tests/**',{base:"."})
+    gulp.src([
+        '**',
+        '!tests/**'
+        ],{base:"."})
         .pipe(zip('bundle.zip'))
         .pipe(gulp.dest('dist'))
 });

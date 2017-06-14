@@ -14,5 +14,5 @@ version=$(e "${m}" "version")
 docker build -f ./Dockerfile.build -t ${author}/${name}:${version}-build . && \
 docker create --name=${name}-${version}-build ${author}/${name}:${version}-build cat && \
 rm -rf ./dist && \
-docker cp ${name}-${version}-build:/opt/helloworld/dist ./dist && \
+docker cp ${name}-${version}-build:/opt/app/dist ./dist && \
 docker rm ${name}-${version}-build
