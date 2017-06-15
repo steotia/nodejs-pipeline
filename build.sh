@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ash
 # Build script
 # set -o errexit
 e () {
