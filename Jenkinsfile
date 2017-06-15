@@ -42,7 +42,8 @@ node('docker') {
          print "Environment will be : ${env.NODE_ENV}"
          sh 'ls -al'
          sh('pwd')
-         sh('build.sh')
+         sh 'cat build.sh'
+         sh('./build.sh')
 
        }
 
