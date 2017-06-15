@@ -35,27 +35,30 @@ node('docker') {
           checkout scm
        }
 
+       stage('Pre-Build'){
+
+         sh('./installDeps.sh')
+
+       }
+
        stage('Build'){
 
          env.NODE_ENV = "build"
 
          print "Environment will be : ${env.NODE_ENV}"
-         sh 'ls -al'
-         sh('pwd')
-         sh 'cat build.sh'
          sh('./build.sh')
 
        }
 
-    //    stage('Deploy'){
+       stage('Publish'){
 
-    //      echo 'Push to Repo'
-    //      sh './dockerPushToRepo.sh'
+         echo 'Push to Repo'
+         sh './dockerPushToRepo.sh'
 
-    //      echo 'ssh to web server and tell it to pull new image'
-    //      sh 'ssh deploy@xxxxx.xxxxx.com running/xxxxxxx/dockerRun.sh'
+         echo 'ssh to web server and tell it to pull new image'
+         sh 'ssh deploy@xxxxx.xxxxx.com running/xxxxxxx/dockerRun.sh'
 
-    //    }
+       }
 
     //    stage('Cleanup'){
 
