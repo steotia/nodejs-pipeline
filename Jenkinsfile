@@ -24,8 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-node('node') {
-
+node('docker') {
 
     currentBuild.result = "SUCCESS"
 
@@ -36,60 +35,44 @@ node('node') {
           checkout scm
        }
 
-       stage('Test'){
+       stage('Build'){
 
-         env.NODE_ENV = "test"
+         env.NODE_ENV = "build"
 
          print "Environment will be : ${env.NODE_ENV}"
 
-         sh 'node -v'
-         sh 'npm prune'
-         sh 'npm install'
-         sh 'npm test'
+         sh './build.sh'
 
        }
 
-       stage('Build Docker'){
+    //    stage('Deploy'){
 
-            sh './dockerBuild.sh'
-       }
+    //      echo 'Push to Repo'
+    //      sh './dockerPushToRepo.sh'
 
-       stage('Deploy'){
+    //      echo 'ssh to web server and tell it to pull new image'
+    //      sh 'ssh deploy@xxxxx.xxxxx.com running/xxxxxxx/dockerRun.sh'
 
-         echo 'Push to Repo'
-         sh './dockerPushToRepo.sh'
+    //    }
 
-         echo 'ssh to web server and tell it to pull new image'
-         sh 'ssh deploy@xxxxx.xxxxx.com running/xxxxxxx/dockerRun.sh'
+    //    stage('Cleanup'){
 
-       }
+    //      echo 'prune and cleanup'
+    //      sh 'npm prune'
+    //      sh 'rm node_modules -rf'
 
-       stage('Cleanup'){
-
-         echo 'prune and cleanup'
-         sh 'npm prune'
-         sh 'rm node_modules -rf'
-
-         mail body: 'project build successful',
-                     from: 'xxxx@yyyyy.com',
-                     replyTo: 'xxxx@yyyy.com',
-                     subject: 'project build successful',
-                     to: 'yyyyy@yyyy.com'
-       }
+    //      mail body: 'project build successful',
+    //                  from: 'xxxx@yyyyy.com',
+    //                  replyTo: 'xxxx@yyyy.com',
+    //                  subject: 'project build successful',
+    //                  to: 'yyyyy@yyyy.com'
+    //    }
 
 
 
     }
     catch (err) {
-
         currentBuild.result = "FAILURE"
-
-            mail body: "project build error is here: ${env.BUILD_URL}" ,
-            from: 'xxxx@yyyy.com',
-            replyTo: 'yyyy@yyyy.com',
-            subject: 'project build failed',
-            to: 'zzzz@yyyyy.com'
-
         throw err
     }
 
