@@ -4,7 +4,7 @@
 e () {
     echo $( echo ${1} | jq ".${2}" | sed 's/\"//g')
 }
-
+$(installDeps.sh)
 m=$(./src/metadata.sh)
 
 author=$(e "${m}" "author")
