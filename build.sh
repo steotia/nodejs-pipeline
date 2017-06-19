@@ -15,4 +15,4 @@ docker create --name=${name}-${version}-build ${author}/${name}:${version}-build
 rm -rf ./dist && \
 docker cp ${name}-${version}-build:/opt/app/dist ./dist && \
 docker rm ${name}-${version}-build && \
-docker build -f ./Dockerfile -t ${author}/${name}:${version}-release -t ${author}/${name}:${version}-bronze .
+docker build -f ./Dockerfile -t ${author}/${name}:${version}-bronze .
