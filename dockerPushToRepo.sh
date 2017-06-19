@@ -12,4 +12,5 @@ version=$(e "${m}" "version")
 
 docker login -usteotia -p`cat /run/secrets/hub-pass`
 docker push ${author}/${name}:${version}-release
+docker push ${author}/${name}:${version}-bronze
 docker logout
