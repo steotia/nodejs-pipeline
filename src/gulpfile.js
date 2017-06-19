@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');
-const zip = require('gulp-zip');
+const tar = require('gulp-tar');
+const gzip = require('gulp-gzip');
 
 gulp.task('default', function() {
   return gulp.src(['tests/**/**.spec.js'], { read: false })
@@ -14,6 +15,7 @@ gulp.task('bundle',function(){
         '**',
         '!tests/**'
         ],{base:"."})
-        .pipe(zip('bundle.zip'))
+        .pipe(tar('bundle.tar'))
+        .pipe(gzip())
         .pipe(gulp.dest('dist'))
 });
