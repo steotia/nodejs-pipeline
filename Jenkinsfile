@@ -53,6 +53,7 @@ node('docker') {
        stage('Publish'){
 
          echo 'Push to Repo'
+         sh 'ls -al ~/'
          sh './dockerPushToRepo.sh'
 
        }
