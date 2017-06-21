@@ -18,4 +18,4 @@ echo "ARTIFACT_LABEL: ${artifactLabel}"
 
 REPLICAS=${replicas} ENV=${env} AUTHOR=${author} NAME=${name} \
 TAG=${version}-${artifactLabel} \
-ssh -A read@swarmm-master-12315180-0 "docker stack deploy -c docker-compose.yml ${name}-${env}"
+ssh -A read@${MANAGER_IP} "docker stack deploy -c docker-compose.yml ${name}-${env}"

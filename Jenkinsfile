@@ -60,7 +60,7 @@ node('docker') {
 
        stage('Deploy to Dev'){
 
-         sh 'REPLICAS=1 ARTIFACT_LABEL=bronze ENV=dev ./deploy.sh'
+         sh 'MANAGER_IP=172.16.0.5 REPLICAS=1 ARTIFACT_LABEL=bronze ENV=dev ./deploy.sh'
 
        }
 
