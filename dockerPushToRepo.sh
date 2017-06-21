@@ -10,6 +10,8 @@ author=$(e "${m}" "author")
 name=$(e "${m}" "name")
 version=$(e "${m}" "version")
 
-docker login -usteotia -p`cat /run/secrets/hub-pass`
-docker push ${author}/${name}:${version}-bronze
+artifactLabel=${ARTIFACT_LABEL:-bronze}
+
+docker login -u "${author}" -p`cat /run/secrets/hub-pass`
+docker push ${author}/${name}:${version}-${artifactLabel}
 docker logout

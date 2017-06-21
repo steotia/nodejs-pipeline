@@ -54,7 +54,7 @@ node('docker') {
 
          echo 'Push to Repo'
          sh 'ls -al ~/'
-         sh './dockerPushToRepo.sh'
+         sh 'ARTIFACT_LABEL=bronze ./dockerPushToRepo.sh'
 
        }
 
