@@ -58,6 +58,12 @@ node('docker') {
 
        }
 
+       stage('Deploy to Dev'){
+
+         sh 'ARTIFACT_LABEL=bronze ENV=dev ./deploy.sh'
+
+       }
+
     //    stage('Cleanup'){
 
     //      echo 'prune and cleanup'
