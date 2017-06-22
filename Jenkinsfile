@@ -60,7 +60,7 @@ node('docker') {
 
        stage('Deploy to Dev'){
 
-         sh 'CONTAINER_PORT=3000 HOST_PORT=3000 MANAGER_IP=172.16.0.5 ARTIFACT_LABEL=bronze ENV=dev ./deploy.sh'
+         sh 'MANAGER_IP=172.16.0.5 ARTIFACT_LABEL=bronze ENV=dev ./deploy.sh'
 
        }
 

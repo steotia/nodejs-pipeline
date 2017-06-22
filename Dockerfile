@@ -1,6 +1,5 @@
 FROM node:8.1.0-alpine
 ENV LAST_UPDATED 0
-ENV APP_PORT 0
 
 RUN addgroup -S app && adduser -S -g app -s /bin/false app
 
@@ -12,6 +11,6 @@ ADD dist/bundle.tar.gz $HOME/helloworld/
 USER app
 WORKDIR $HOME/helloworld
 
-EXPOSE ${APP_PORT}
+EXPOSE 3000
 
-CMD ["sh", "-c", "node app.js"]
+CMD ["sh", "-c", "APP_PORT=3000 node app.js"]
