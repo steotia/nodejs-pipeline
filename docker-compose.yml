@@ -4,6 +4,8 @@ services:
 
   helloworld:
     image: "${AUTHOR}/${NAME}:${TAG}"
+    environment:
+      - CONTAINER_PORT=${CONTAINER_PORT}
     ports:
       - "${HOST_PORT}:${CONTAINER_PORT}"
     deploy:
