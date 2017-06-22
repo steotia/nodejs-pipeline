@@ -20,5 +20,5 @@ cat /run/secrets/read-key > ~/.ssh/read-key && \
 chmod 600 ~/.ssh/read-key && \
 REPLICAS=${replicas} ENV=${env} AUTHOR=${author} NAME=${name} \
 TAG=${version}-${artifactLabel} \
-ssh -o StrictHostKeyChecking=no -i ~/.ssh/read-key read@${MANAGER_IP} "docker stack deploy -c docker-compose.yml ${name}-${env}" && \
+ssh -o StrictHostKeyChecking=no -i ~/.ssh/read-key ops@${MANAGER_IP} "docker stack deploy -c docker-compose.yml ${name}-${env}" && \
 rm ~/.ssh/read-key
