@@ -19,7 +19,7 @@ echo "env:            ${env}"
 echo "author:         ${author}"
 echo "name:           ${name}"
 echo "version:        ${version}"
-echo "artifactLabel:  ${artifactLabel}"
+echo "replicas:       ${replicas}"
 
 REPLICAS=${replicas} ENV=${env} AUTHOR=${author} NAME=${name} \
 TAG=${version}-${artifactLabel} \
