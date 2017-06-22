@@ -16,6 +16,8 @@ replicas=${REPLICAS:-0}
 
 echo "ARTIFACT_LABEL: ${artifactLabel}"
 
+cat /run/secrets/read-key > ~/.ssh/read-key && \
 REPLICAS=${replicas} ENV=${env} AUTHOR=${author} NAME=${name} \
 TAG=${version}-${artifactLabel} \
-ssh -o StrictHostKeyChecking=no -i /run/secrets/read-key read@${MANAGER_IP} "docker stack deploy -c docker-compose.yml ${name}-${env}"
+ssh -o StrictHostKeyChecking=no -i ~/.ssh/read-key read@${MANAGER_IP} "docker stack deploy -c docker-compose.yml ${name}-${env}" && \
+rm ~/.ssh/read-key
