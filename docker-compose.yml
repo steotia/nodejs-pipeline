@@ -9,6 +9,8 @@ services:
     secrets:
     deploy:
       replicas: "${REPLICAS}"
-      placement: ["node.labels.env==${ENV}"]
+      placement: 
+        constraints: 
+          - "node.labels.env==${ENV}"
 
 secrets:
