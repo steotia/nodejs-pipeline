@@ -14,7 +14,12 @@ artifactLabel=${ARTIFACT_LABEL:-bronze}
 env=${ENV:-null}
 replicas=${REPLICAS:-0}
 
-echo "ARTIFACT_LABEL: ${artifactLabel}"
+echo "artifactLabel:  ${artifactLabel}"
+echo "env:            ${env}"
+echo "author:         ${author}"
+echo "name:           ${name}"
+echo "version:        ${version}"
+echo "artifactLabel:  ${artifactLabel}"
 
 REPLICAS=${replicas} ENV=${env} AUTHOR=${author} NAME=${name} \
 TAG=${version}-${artifactLabel} \
