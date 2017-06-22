@@ -12,15 +12,13 @@ version=$(e "${m}" "version")
 
 artifactLabel=${ARTIFACT_LABEL:-bronze}
 env=${ENV:-null}
-replicas=${REPLICAS:-0}
 
 echo "artifactLabel:  ${artifactLabel}"
 echo "env:            ${env}"
 echo "author:         ${author}"
 echo "name:           ${name}"
 echo "version:        ${version}"
-echo "replicas:       ${replicas}"
 
-REPLICAS=${replicas} ENV=${env} AUTHOR=${author} NAME=${name} \
+ENV=${env} AUTHOR=${author} NAME=${name} \
 TAG=${version}-${artifactLabel} \
 docker -H tcp://${MANAGER_IP} stack deploy -c docker-compose.yml ${name}-${env}
