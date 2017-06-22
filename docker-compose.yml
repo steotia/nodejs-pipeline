@@ -4,13 +4,8 @@ services:
 
   helloworld:
     image: "${AUTHOR}/${NAME}:${TAG}"
-    environment:
-    volumes:
-    secrets:
     deploy:
       replicas: 1
       placement: 
         constraints: 
           - "node.labels.env==${ENV}"
-
-secrets:
