@@ -4,6 +4,8 @@ services:
 
   helloworld:
     image: "${AUTHOR}/${NAME}:${TAG}"
+    ports:
+      - "${HOST_PORT}:${CONTAINER_PORT}"
     deploy:
       replicas: 1
       placement: 
