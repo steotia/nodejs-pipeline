@@ -21,6 +21,6 @@ echo "author:         ${author}"
 echo "name:           ${name}"
 echo "version:        ${version}"
 
-CONTAINER_PORT=${containerPort} APP_PORT=${hostPort} ENV=${env} AUTHOR=${author} NAME=${name} \
+CONTAINER_PORT=${containerPort} HOST_PORT=${hostPort} ENV=${env} AUTHOR=${author} NAME=${name} \
 TAG=${version}-${artifactLabel} \
 docker -H tcp://${MANAGER_IP} stack deploy -c docker-compose.yml ${name}-${env}
